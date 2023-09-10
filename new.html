@@ -31,6 +31,7 @@
 			margin: 0;
 			padding: 0;
 			line-height: 1.32;
+			-webkit-font-smoothing: antialiased;
 		}
 
 		body {
@@ -45,18 +46,23 @@
 
 		header {
 			height: var(--header-height);
-			width: var(--container-width);
+			width: 100%;
 			position: fixed;
-			display: flex;
-			gap: 7px;
-			justify-content: space-between;
-			align-items: center;
-			box-sizing: border-box;
 			left: 50%;
 			transform: translate(-50%, 0);
 			z-index: 100;
+			transition: background-color 300ms linear;
+		}
+
+		.header {
+			height: var(--header-height);
+			width: var(--container-width);
+			display: flex;
+			gap: 20px;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
 			font-size: 16px;
-			-webkit-font-smoothing: antialiased;
 		}
 
 		nav {
@@ -309,16 +315,22 @@
 		}
 
 		.registration__container img {
+			object-fit: cover;
 			height: 400px;
 		}
 
 		.registration__container h2 {
-			margin-bottom: 23px;
+			margin-bottom: 24px;
+		}
+
+		.registration__container p + p {
+			margin-top: 24px;
 		}
 
 		.registration__container__link {
 			display: flex;
 			justify-content: center;
+			width: 100%;
 		}
 
 		.registration__link {
@@ -371,9 +383,11 @@
 			opacity: 0.30;
 			margin-top: 34px;
 			margin-bottom: 14px;
+			background-color: #fff;
 		}
 
 		.info__card p {
+			height: 100px;
 			font-size: 18px;
 			line-height: 1.55;
 			font-weight: 300;
@@ -382,6 +396,11 @@
 
 		.schedule__h2 {
 			margin-bottom: 20px;
+		}
+
+		.schedule__p {
+			font-size: 24px;
+			font-weight: 300;
 		}
 
 		.schedule__container {
@@ -393,7 +412,12 @@
 		.schedule__container h3 {
 			font-size: 22px;
 			font-weight: 600;
-			justify-self: right;
+			text-align: right;
+		}
+
+		.schedule__container p {
+			font-size: 20px;
+			font-weight: 300;
 		}
 
 		.gallery__container {
@@ -428,6 +452,7 @@
 			background-color: #000000;
 			color: white;
 			text-decoration: none;
+			text-align: center;
 			font-size: xx-large;
 			font-weight: 700;
 			padding: 10px 300px;
@@ -465,8 +490,22 @@
 			height: 600px;
 		}
 
+		.contacts__container {
+			gap: 60px
+		}
+
+		.contacts__container h2 {
+			margin-bottom: 0;
+		}
+
+		.contacts__container p {
+			font-size: 24px;
+		}
+
 		.partners__container {
 			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
 			gap: 60px;
 		}
 
@@ -477,10 +516,12 @@
 			grid-template-rows: 1fr 25px;
 			justify-items: center;
 			text-decoration: none;
+			max-width: 150px;
 		}
 
 		.partners__container img {
-			max-height: 100px;
+			max-width: 300px;
+			max-height: 150px;
 		}
 
 		footer {
@@ -494,30 +535,140 @@
 		}
 
 		@media (max-width: 980px) {
+			:root {
+				--container-width: 350px;
+			}
 
+			header {
+				height: 100%;
+				transform: unset;
+				background-color: rgb(0, 0, 0);
+				position: unset;
+				padding-top: 20px;
+				padding-bottom: 35px;
+			}
+
+			.header {
+				height: 100%;
+				flex-direction: column;
+			}
+
+			nav {
+				gap: 35px;
+				flex-direction: column;
+			}
+
+			.header__nav {
+				gap: 20px;
+				flex-direction: column;
+			}
+
+			h2 {
+				font-size: 28px;
+				text-align: center;
+			}
+
+			p {
+				font-size: 16px;
+			}
+
+			.about__container {
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr 1fr 1fr;
+			}
+
+			.registration__container {
+				flex-direction: column;
+			}
+
+			.info__cover {
+				height: 100vh;
+			}
+
+			.info__cover .top__filter {
+				height: 100vh;
+			}
+
+			.info__container {
+				height: calc(100vh - 100px);
+				gap: 20px;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr 1fr 1fr;
+			}
+
+			.info__container h3 {
+				font-size: 30px
+			}
+
+			.schedule__container {
+				gap: 20px;
+				grid-template-columns: 1fr;
+			}
+
+			.schedule__container h3 {
+				text-align: left;
+			}
+
+			.gallery__container {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+			}
+
+			.gallery__container .medium__image {
+				grid-area: 4 / 1 / 6 / 3;
+			}
+
+			.gallery__link {
+				width: 100%;
+				padding: 10px 0;
+			}
+
+			.map__card {
+				position: unset;
+				padding: 40px;
+			}
+
+			#map {
+				height: 400px;
+			}
+
+			.contacts__container p {
+				font-size: 20px;
+			}
+
+			.partners__container {
+				gap: 20px
+			}
+
+			.partners__container img {
+				max-width: 200px;
+				max-height: 100px;
+			}
 		}
 	</style>
 </head>
 <body>
-<header class="header">
-	<img class="logo" src="images_new/sfedu.png" alt="На главную">
-	<nav>
-		<ul class="header__nav">
-			<li><a href="#about">О хакатоне</a></li>
-			<li><a href="#schedule">Программа</a></li>
-			<li><a href="#place">Место</a></li>
-			<li><a href="#contacts">Контакты</a></li>
-		</ul>
-		<div class="header__nav__social-links">
-			<a href="https://vk.com/open_cybergarden" target="_blank">
-				<img src="images_new/socials/vk.svg" alt="VK">
-			</a>
-			<a href="https://t.me/CyberGarden15" target="_blank">
-				<img src="images_new/socials/tg.svg" alt="TG">
-			</a>
-		</div>
-		<a class="header__nav__btn" href="https://forms.gle/CFXuY8phGetg4YJm7" target="_blank">Зарегистрироваться</a>
-	</nav>
+<header id="header" class="container__center">
+	<div class="header">
+		<img class="logo" src="images_new/sfedu.png" alt="На главную">
+		<nav>
+			<ul class="header__nav">
+				<li><a href="#about">О хакатоне</a></li>
+				<li><a href="#schedule">Программа</a></li>
+				<li><a href="#place">Место</a></li>
+				<li><a href="#contacts">Контакты</a></li>
+			</ul>
+			<div class="header__nav__social-links">
+				<a href="https://vk.com/open_cybergarden" target="_blank">
+					<img src="images_new/socials/vk.svg" alt="VK">
+				</a>
+				<a href="https://t.me/CyberGarden15" target="_blank">
+					<img src="images_new/socials/tg.svg" alt="TG">
+				</a>
+			</div>
+			<a class="header__nav__btn" href="https://forms.gle/CFXuY8phGetg4YJm7" target="_blank">Зарегистрироваться</a>
+		</nav>
+	</div>
 </header>
 <main class="main">
 	<section class="top">
@@ -579,7 +730,7 @@
 <!--		TODO add section Тематики кейсов на хакатоне -->
 		<div class="registration__container__link">
 			<a class="registration__link" href="/file.pdf" target="_blank">
-				<svg class="t430__btn-img t430__inlinesvg" style="" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+				<svg class="t430__btn-img t430__inlinesvg" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
 				     viewBox="0 0 56 68" fill="#FFFFFF">
 					<path class="st0" d="M16 0h24v24h16L28 52 0 24h16zM0 60h56v8H0z"/>
 				</svg>
@@ -608,7 +759,7 @@
 	</section>
 	<section class="container container__center" id="schedule">
 		<h2 class="schedule__h2">Программа хакатона Cyber Garden Hardware</h2>
-		<p class="margin_bottom">6 – 8 октября 2023 г.</p>
+		<p class="schedule__p margin_bottom">6 – 8 октября 2023 г.</p>
 		<div class="schedule__container">
 			<h3>Пятница, 6 октября</h3>
 			<div>
@@ -671,16 +822,16 @@
 		</div>
 		<div id="map"></div>
 	</section>
-	<section id="contacts" class="container container__center">
+	<section id="contacts" class="container container__center contacts__container">
 		<h2>Наши партнёры</h2>
-		<p class="align_center margin_bottom" style="font-size: 24px">Если вы хотите стать нашим партнёром,<br>свяжитесь с нами по почте: delkin@sfedu.ru<br>или телефону: <b>+7 (951) 846-55-31</b> - Дмитрий Елькин</p>
-		<div class="partners__container margin_bottom">
+		<p class="align_center">Если вы хотите стать нашим партнёром,<br>свяжитесь с нами по почте: delkin@sfedu.ru<br>или телефону: <b>+7 (951) 846-55-31</b> - Дмитрий Елькин</p>
+		<div class="partners__container">
 			<a href="https://vk.com/ictis_sfedu" target="_blank"><img src="images_new/partners/ictis.png" alt=ИКТИБ""></a>
 			<a href="https://vk.com/sfedu_official" target="_blank"><img src="images_new/partners/sfedu.png" alt="ЮФУ"></a>
 			<a href="#" target="_blank"><img src="images_new/partners/skb.jpg" alt="КИТ"></a>
 			<a href="https://minsvyaz.donland.ru" target="_blank" class="partners__with-text"><img src="images_new/partners/minc.png" alt="Министерство цифрового развития, информационных технологий и связи Ростовской области."><p style="font-size:8px;">Министерство цифрового развития, информационных<br> технологий и связи Ростовской области.</p></a>
 		</div>
-		<div class="partners__container margin_bottom">
+		<div class="partners__container">
 			<a href="https://fadm.gov.ru/activity/grant" target="_blank"><img src="images_new/partners/rosmolodez.png" alt=""></a>
 			<a href="https://niisva.dev" target="_blank"><img src="images_new/partners/specvyz.png" alt=""></a>
 			<a href="http://nkbvs.ru" target="_blank"><img src="images_new/partners/nkbvs.png" alt=""></a>
@@ -698,6 +849,16 @@
 	© 2015 - 2023 Хакатон Cyber Garden
 </footer>
 <script>
+	if (window.screen.width > 980) {
+		const header = document.getElementById('header');
+		document.addEventListener("DOMContentLoaded", () => {
+			window.addEventListener('scroll', () => {
+				if (scrollY < 20) header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+				else header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+			})
+		})
+	}
+
 	ymaps3.ready.then(async () => {
 		const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-markers@0.0.1');
 
